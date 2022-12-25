@@ -2,21 +2,23 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
+  margin: 7px;
   background-color: #000000e6;
-  width: 300px;
+  width: 400px;
+  height: 150px;
   border-radius: 10px;
 `;
 
 export const Video = styled.video`
   border-radius: 10px;
-  width: 150px;
+  width: 200px;
+
 `;
 
 export const Time = styled.p`
     color:white;
-    position: absolute;
-    left: 40px;
-    
+
 `
 
 export const Content = styled.div`
@@ -24,6 +26,11 @@ export const Content = styled.div`
   flex-direction: column;
 `;
 
-export const Description = styled.p``;
+export const Description = styled.p`
+  color: #ffffff;
+  font-size: 18px;
+`;
 
-export const Title = styled.p``;
+export const Title = styled.p`
+  color: #ffffff;
+`;

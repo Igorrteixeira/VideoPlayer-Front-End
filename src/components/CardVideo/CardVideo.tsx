@@ -1,23 +1,34 @@
 import React , { useRef } from 'react'
+import { Videos } from '../../data'
 import { formatTime } from '../../services/formatTime'
 import * as S from './Style'
 
-const CardVideo = () => {
+interface Props {
+  videos:Videos[]
+}
+
+const CardVideo = (props:Props) => {
   const videoRef = useRef<any>()
   return (
-    <S.Container>
-    
+    <>
+    {props.videos.map(video =>{
+      return (
+    <S.Container  key={video.id}>
       <S.Video 
       ref={videoRef}
-      src="https://storage.googleapis.com/future-apis.appspot.com/1.mp4"
+      src={video.url}
       />
       <S.Time>{formatTime(Number(videoRef?.current?.duration))}</S.Time>
       <S.Content>
-      <S.Description>defergr</S.Description>
-      <S.Title>title</S.Title>
+      <S.Description>{video.description}</S.Description>
+      <S.Title>{video.title}</S.Title>
       </S.Content>
 
     </S.Container>
+      )
+    })
+    }
+    </>
   )
 }
 

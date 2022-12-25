@@ -6,7 +6,10 @@ export interface Videos {
 
 }
 
-const videos:Videos [] = [
+
+export const filter:string[] =['Todos','Natureza','Galaxias','relacionados','outros',"teste",'teste2'] 
+
+export const videos:Videos [] = [
     {
         id:1,
         title:"videos1",
