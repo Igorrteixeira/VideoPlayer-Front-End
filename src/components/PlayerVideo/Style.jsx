@@ -3,17 +3,19 @@ import styled, { keyframes } from "styled-components";
 export const ContainerVideo = styled.section`
   display: flex;
   flex-direction: column;
+  background-color: #000000e6;
   position: relative;
   min-width: 50vw;
 
-
   :hover .controls{
-    display: block;
+    display: flex;
   }
 `;
 
 export const Video = styled.video`
- 
+    width: 100vw;
+    height: 50vh;
+
 `;
 
 export const Controls = styled.div`
@@ -24,16 +26,15 @@ export const Controls = styled.div`
   position: absolute;
   bottom: 0px;
   width: 100%;
-  display: none;
+  display: ${(props) => props.display !== true ? "flex" : "none"};
   background-image: linear-gradient(#1f1f1f12,#11111133, #0b0b0b6d, #191818b9 );
 `;
 
 export const ContButtons = styled.div`
-    width: 98%;
-    margin: 10px;
+  width: 98%;
+  margin: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
   justify-content: space-between;
   gap: 10px;
 `;
@@ -44,7 +45,7 @@ export const PlayButton = styled.button`
   color: #c6c5c5;
 `;
 
-const slideCard = keyframes`
+const slide = keyframes`
     to {
         opacity: 1;
         transform: translateX(0px);
@@ -52,15 +53,16 @@ const slideCard = keyframes`
 `
 
 export const Volume = styled.div`
+  margin-left: 20px;
   display: flex;
   color: #dbd7d7;
   align-items: center;
-  gap: 10px;
-  width: 200px;
+  gap: 20px;
+  width: 70%;
   
   :hover #bar-volume{
     display: block;
-    animation: ${slideCard} .9s forwards;
+    animation: ${slide} .9s forwards;
     opacity: 0;
 
   }
@@ -84,6 +86,7 @@ export const TimeVideo = styled.div`
   display: flex;
   color: #fffafa;
   
+  
 `;
 
 export const ProgressBar = styled.input`
@@ -102,9 +105,16 @@ export const ProgressBar = styled.input`
   }
 `;
 
+export const ConfigurationButtons = styled.div`
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+`
+
 export const Speed = styled.select`
     color: #dbd7d7;
     background: transparent;
+    margin-left: auto;
 `;
 
 export const FullScreenButton = styled.button`
