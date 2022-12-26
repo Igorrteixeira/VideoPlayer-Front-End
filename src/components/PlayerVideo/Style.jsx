@@ -3,19 +3,22 @@ import styled, { keyframes } from "styled-components";
 export const ContainerVideo = styled.section`
   display: flex;
   flex-direction: column;
-  background-color: #000000e6;
   position: relative;
-  min-width: 50vw;
 
+  width:${(props) => props.screen !== false ? '98vw' : 'auto' };
+  height: auto;
   :hover .controls{
     display: flex;
   }
+
+
+
 `;
 
 export const Video = styled.video`
-    width: 100vw;
-    height: 50vh;
-
+    width: 100%;
+    height: 100% ;
+  
 `;
 
 export const Controls = styled.div`
@@ -25,6 +28,7 @@ export const Controls = styled.div`
   flex-direction: column;
   position: absolute;
   bottom: 0px;
+ 
   width: 100%;
   display: ${(props) => props.display !== true ? "flex" : "none"};
   background-image: linear-gradient(#1f1f1f12,#11111133, #0b0b0b6d, #191818b9 );

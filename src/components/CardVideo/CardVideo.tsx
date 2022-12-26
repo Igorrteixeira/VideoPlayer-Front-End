@@ -1,34 +1,29 @@
 import React , { useRef } from 'react'
-import { Videos } from '../../data'
 import { formatTime } from '../../services/formatTime'
+import  {Videos}  from '../../data'
 import * as S from './Style'
 
-interface Props {
-  videos:Videos[]
+export interface PropsCardVideo {
+  video:Videos
+  handleClick: () => void
 }
 
-const CardVideo = (props:Props) => {
+const CardVideo = (props:PropsCardVideo) => {
+  const {id,title,url,description} = props.video
   const videoRef = useRef<any>()
   return (
-    <>
-    {props.videos.map(video =>{
-      return (
-    <S.Container  key={video.id}>
-      <S.Video 
+    <S.Container  key={id}>
+      <S.Video onClick={props.handleClick}
       ref={videoRef}
-      src={video.url}
+      src={url}
       />
       <S.Time>{formatTime(Number(videoRef?.current?.duration))}</S.Time>
       <S.Content>
-      <S.Description>{video.description}</S.Description>
-      <S.Title>{video.title}</S.Title>
+      <S.Title>{title}</S.Title>
+      <S.Description>{description}</S.Description>
+      
       </S.Content>
-
     </S.Container>
-      )
-    })
-    }
-    </>
   )
 }
 

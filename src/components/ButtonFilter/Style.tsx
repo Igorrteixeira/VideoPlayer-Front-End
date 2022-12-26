@@ -6,8 +6,13 @@ export const Container = styled.div`
     padding: 10px;
     overflow: auto;
     position: relative;
-
-    width: auto;
+    overflow: auto;
+    width:400px;
+    padding-bottom: 50px;
+    @media screen and (min-device-width : 481px) and (max-device-width : 950px) {
+      width: 90vw;
+      
+}
 `
 
 export const ButtonFilter = styled.button`

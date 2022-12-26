@@ -1,35 +1,42 @@
-import React, { useRef } from 'react'
+import React, { useRef,useEffect,useContext} from 'react'
 import * as S from "./Style"
 import { formatTime } from "../../services/formatTime"
 import { FaPlay, FaPause } from "react-icons/fa"
 import { BiFullscreen, BiVolumeMute, BiVolumeFull } from "react-icons/bi"
 import { usePlayer } from '../../hooks/usePlayer'
+import  PlayerContext from "../../context/PlayerContext"
+import Loader from '../Loader/Loader'
 
 
-const videoUrl = "https://storage.googleapis.com/future-apis.appspot.com/1.mp4"
 
-const PlayerVideo = () => {
+interface Props {
+  url:string
+}
 
-  const videoRef = useRef<any>()
-  // console.log(videoRef.current.theater)   
+const PlayerVideo = (props:Props) => {
+  
+  const {playerState, setPlayerState} = useContext(PlayerContext)
+  let videoRef = useRef<any>()
+
+ 
   const { changePlay,
-    playerState,
     handleTimeUpdate,
     changePorcentege,
     changePlayBack,
     changeVolume,
     handleVolumeUpdate,
     changeMute,
-    changeFullScreen } = usePlayer(videoRef)
+    changeFullScreen } = usePlayer(videoRef,props.url)
 
 
   return (
-    <S.ContainerVideo>
+    <S.ContainerVideo screen={playerState.fullScreen}>
       <S.Video
         ref={videoRef}
-        src={videoUrl}
+        src={props.url}
         onTimeUpdate={handleTimeUpdate}
         onVolumeChange={handleVolumeUpdate}
+        autoPlay
       />
       <S.Controls display={playerState.play} className='controls' >
         <S.ProgressBar

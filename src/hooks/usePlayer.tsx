@@ -1,28 +1,26 @@
-import { useState, useEffect } from "react"
+import {  useEffect,useContext } from "react"
+import  PlayerContext from "../context/PlayerContext"
+import { DEFALT_VALUE } from "../provider/PlayerStateProvider"
 
-interface Player {
-    play: boolean,
-    persentage: number,
-    volume: number,
-    mute: boolean,
-    fullScreen: boolean,
-    time: number,
-    currentTime: number
-}
+export const usePlayer = (videoRef: any,url:string) => {
+    
+    const {playerState, setPlayerState} = useContext(PlayerContext)
+    console.log(videoRef)
 
-export const usePlayer = (videoRef: any) => {
-    const [playerState, setPlayerState] = useState<Player>({
-        play: false,
+    const INITIAL = {
+        play: true,
         persentage: 0,
         volume: 100,
         mute: true,
         fullScreen: false,
-        time: 0,
-        currentTime: 0
-    })
+        time: videoRef?.current?.duration ,
+        currentTime: videoRef?.current?.currentTime
+    }
+
+  
 
     const changePlay = () => {
-        setPlayerState({ ...playerState, play: !playerState.play })
+        setPlayerState({ ...playerState, play: !playerState.play})
     }
 
     const handleTimeUpdate = () => {
@@ -77,6 +75,10 @@ export const usePlayer = (videoRef: any) => {
             currentTime: videoRef.current.currentTime
         })
     }, [videoRef?.current?.currentTime])
+
+    useEffect(()=> {
+        setPlayerState(INITIAL)
+    },[url])  
 
     return {
         playerState,
