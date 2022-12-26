@@ -1,17 +1,19 @@
+import { type } from "os";
 import styled, { keyframes } from "styled-components";
+
+
 
 export const ContainerVideo = styled.section`
   display: flex;
   flex-direction: column;
   position: relative;
-
+  min-width:65vw;
+  height:${(props) => props.screen !== false ? '98vh' : 'auto' };
   width:${(props) => props.screen !== false ? '98vw' : 'auto' };
-  height: auto;
+   
   :hover .controls{
     display: flex;
   }
-
-
 
 `;
 
@@ -80,10 +82,6 @@ export const VolumeBar = styled.input`
   height: 5px;
   width: 80px;
   display: none;
-/*   
-  ::-webkit-slider-thumb {
- 
-  } */
 
 `;
 export const TimeVideo = styled.div`

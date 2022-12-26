@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+type Props = {
+  screen:boolean
+}
+
+export const Container = styled.section<Props>`
     display: flex;
     padding: 13px;
     gap: 10px;

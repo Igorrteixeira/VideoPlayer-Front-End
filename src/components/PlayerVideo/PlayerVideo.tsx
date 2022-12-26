@@ -5,7 +5,7 @@ import { FaPlay, FaPause } from "react-icons/fa"
 import { BiFullscreen, BiVolumeMute, BiVolumeFull } from "react-icons/bi"
 import { usePlayer } from '../../hooks/usePlayer'
 import  PlayerContext from "../../context/PlayerContext"
-import Loader from '../Loader/Loader'
+
 
 
 
@@ -28,6 +28,7 @@ const PlayerVideo = (props:Props) => {
     changeMute,
     changeFullScreen } = usePlayer(videoRef,props.url)
 
+    
 
   return (
     <S.ContainerVideo screen={playerState.fullScreen}>
@@ -37,6 +38,7 @@ const PlayerVideo = (props:Props) => {
         onTimeUpdate={handleTimeUpdate}
         onVolumeChange={handleVolumeUpdate}
         autoPlay
+        
       />
       <S.Controls display={playerState.play} className='controls' >
         <S.ProgressBar
