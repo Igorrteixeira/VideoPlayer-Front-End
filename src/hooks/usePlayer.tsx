@@ -7,6 +7,7 @@ export const usePlayer = (videoRef: any, url: string) => {
 
     const changePlay = () => {
         setPlayerState({ ...playerState, play: !playerState.play })
+        playerState.play ? videoRef.current.play() : videoRef.current.pause()
     }
 
     const handleTimeUpdate = () => {
@@ -57,8 +58,7 @@ export const usePlayer = (videoRef: any, url: string) => {
     }
 
     useEffect(() => {
-        playerState.play ? videoRef.current.play() :
-            videoRef.current.pause()
+        changePlay()
     }, [playerState.play])
 
     return {
