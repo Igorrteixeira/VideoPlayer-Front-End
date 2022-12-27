@@ -27,15 +27,15 @@ const Home = () => {
 
         <S.ListFilter>
           {listFilter.map(item => {
-            return <ButtonFilter
+            return <ButtonFilter key={item}
               handleClick={() => setFilter(item)}
               title={item} />
           })}
         </S.ListFilter>
 
-        {videos.map(item => {
+        {videos.map((item,index) => {
           if (filter === "Todos" || item.category === filter) {
-            return <CardVideo
+            return <CardVideo key={index}
               video={item}
               handleClick={() => SetVideo(item)}
             />

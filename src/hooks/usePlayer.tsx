@@ -78,6 +78,10 @@ export const usePlayer = (videoRef: any, url: string) => {
         setPlayerState(INITIAL)
     }, [url])
 
+
+
+    
+
     return {
         playerState,
         changePlay,
