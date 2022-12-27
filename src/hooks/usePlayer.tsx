@@ -57,10 +57,6 @@ export const usePlayer = (videoRef: any, url: string) => {
         videoRef.current.playbackRate = event.target.value
     }
 
-    useEffect(() => {
-        changePlay()
-    }, [playerState.play])
-
     return {
         playerState,
         changePlay,
