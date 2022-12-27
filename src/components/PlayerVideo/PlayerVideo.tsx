@@ -23,7 +23,7 @@ const PlayerVideo = (props: Props) => {
     handleVolumeUpdate,
     changeMute,
     changeFullScreen,
-  } = usePlayer(videoRef);
+  } = usePlayer(videoRef,props.url);
 
   return (
     <S.ContainerVideo screen={playerState.fullScreen}>
@@ -47,7 +47,7 @@ const PlayerVideo = (props: Props) => {
         <S.ContButtons>
           <S.ButtonsLeft>
             <S.PlayButton onClick={() => changePlay()}>
-              {playerState.play ? (
+              {!playerState.play ? (
                 <FaPause size={"25px"} />
               ) : (
                 <FaPlay size={"25px"} />
