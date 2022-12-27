@@ -1,13 +1,13 @@
 import * as S from './Style'
 import React, { useContext, useState } from 'react'
 import { Videos, videos, listFilter } from "../../data"
-import CardVideo from '../../components/CardVideo/CardVideo'
-import PlayerVideo from '../../components/PlayerVideo/PlayerVideo'
+import CardVideo from '../CardVideo/CardVideo'
+import PlayerVideo from '../PlayerVideo/PlayerVideo'
 import PlayerContext from "../../context/PlayerContext"
-import ButtonFilter from '../../components/ButtonFilter/ButtonFilter'
-import CardDescriptipn from '../../components/CardDescription/CardDescriptipn'
+import ButtonFilter from '../ButtonFilter/ButtonFilter'
+import CardDescriptipn from '../CardDescription/CardDescriptipn'
 
-const Home = () => {
+const PageVideos = () => {
   const { playerState, setPlayerState } = useContext(PlayerContext)
   const [video, SetVideo] = useState<Videos>({ id: 0, description: '', category: '', title: '', url: '', })
   const [filter, setFilter] = useState<string>("Todos")
@@ -47,4 +47,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default PageVideos
