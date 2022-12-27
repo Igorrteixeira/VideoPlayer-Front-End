@@ -5,16 +5,6 @@ export const usePlayer = (videoRef: any, url: string) => {
 
     const { playerState, setPlayerState } = useContext(PlayerContext)
 
-    const INITIAL = {
-        play: true,
-        persentage: 0,
-        volume: 100,
-        mute: true,
-        fullScreen: false,
-        time: videoRef?.current?.duration,
-        currentTime: videoRef?.current?.currentTime
-    }
-
     const changePlay = () => {
         setPlayerState({ ...playerState, play: !playerState.play })
     }
@@ -22,6 +12,11 @@ export const usePlayer = (videoRef: any, url: string) => {
     const handleTimeUpdate = () => {
         const currentPorcentage: number = (videoRef.current.currentTime / videoRef.current.duration * 100)
         setPlayerState({ ...playerState, persentage: currentPorcentage })
+        setPlayerState({
+            ...playerState,
+            time: videoRef.current.duration,
+            currentTime: videoRef.current.currentTime
+        })
     }
 
     const changePorcentege = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,22 +60,6 @@ export const usePlayer = (videoRef: any, url: string) => {
         playerState.play ? videoRef.current.play() :
             videoRef.current.pause()
     }, [playerState.play])
-
-    useEffect(() => {
-        setPlayerState({
-            ...playerState,
-            time: videoRef.current.duration,
-            currentTime: videoRef.current.currentTime
-        })
-    }, [videoRef?.current?.currentTime])
-
-    useEffect(() => {
-        setPlayerState(INITIAL)
-    }, [url])
-
-
-
-    
 
     return {
         playerState,
