@@ -22,7 +22,7 @@ export const ContainerVideo = styled.section<Screen>`
   min-width: 65vw;
   height: ${(props) => (props.screen !== false ? "98vh" : "auto")};
   width: ${(props) => (props.screen !== false ? "98vw" : "auto")};
-  
+
   :hover .controls {
     display: flex;
     animation: ${slide} 1.1s forwards;
@@ -123,7 +123,7 @@ export const Speed = styled.select`
   margin-left: auto;
   height: 20px;
 
-  option{
+  option {
     background-color: black;
     position: absolute;
   }

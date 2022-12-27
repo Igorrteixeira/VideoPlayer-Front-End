@@ -24,10 +24,11 @@ export const Time = styled.p`
   color: white;
   position: absolute;
   padding: 2px;
-  bottom: 20%;
+  bottom: 25px;
   left: 18%;
   background: #15151577;
-  border-radius: 5px;
+  border-radius: 5px; 
+ 
 `;
 
 export const Content = styled.div`
