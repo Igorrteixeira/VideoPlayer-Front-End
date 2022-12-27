@@ -3,7 +3,7 @@ import * as S from "./Style";
 import { formatTime } from "../../services/formatTime";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { BiFullscreen, BiVolumeMute, BiVolumeFull } from "react-icons/bi";
-import { usePlayer } from "../../hooks/usePlayer";
+import usePlayer  from "../../hooks/usePlayer";
 import PlayerContext from "../../context/PlayerContext";
 
 interface Props {
@@ -23,7 +23,7 @@ const PlayerVideo = (props: Props) => {
     handleVolumeUpdate,
     changeMute,
     changeFullScreen,
-  } = usePlayer(videoRef, props.url);
+  } = usePlayer(videoRef);
 
   return (
     <S.ContainerVideo screen={playerState.fullScreen}>
@@ -76,8 +76,8 @@ const PlayerVideo = (props: Props) => {
             </S.Volume>
 
             <S.TimeVideo>
-              {formatTime(playerState.currentTime)}{" "}
-              {"/" + formatTime(playerState.time)}
+              {playerState.currentTime && playerState.time ?
+              <p>{formatTime(playerState.currentTime)}/{formatTime(playerState.time)}</p>:''}
             </S.TimeVideo>
           </S.ButtonsLeft>
 

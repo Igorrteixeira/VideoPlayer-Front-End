@@ -1,13 +1,18 @@
 import { useEffect, useContext } from "react"
 import PlayerContext from "../context/PlayerContext"
 
-export const usePlayer = (videoRef: any, url: string) => {
+const usePlayer = (videoRef: any) => {
 
     const { playerState, setPlayerState } = useContext(PlayerContext)
 
     const changePlay = () => {
         setPlayerState({ ...playerState, play: !playerState.play })
-        playerState.play ? videoRef.current.play() : videoRef.current.pause()
+        if(playerState.play){
+            videoRef.current.play()
+        }else{
+            videoRef.current.pause()
+        }
+           
     }
 
     const handleTimeUpdate = () => {
@@ -71,6 +76,7 @@ export const usePlayer = (videoRef: any, url: string) => {
 
 }
 
+export default usePlayer
 
 
 

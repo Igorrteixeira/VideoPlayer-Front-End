@@ -4,12 +4,12 @@ type Props = {
   screen: boolean;
 };
 
-export const Container = styled.section<Props>`
+export  const Container = styled.section`
   display: flex;
   padding: 13px;
   gap: 10px;
   background-color: #0b0b0b;
-  flex-direction: ${(props) => (props.screen !== false ? "column" : "row")};
+  flex-direction: ${(props:Props) => (props.screen !== false ? "column" : "row")};
 
   @media screen and (min-device-width: 300px) and (max-device-width: 950px) {
     flex-direction: column;

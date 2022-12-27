@@ -1,4 +1,4 @@
-import * as S from "./Style"
+import * as S from './Style'
 import React, { useContext, useState } from 'react'
 import { Videos, videos, listFilter } from "../../data"
 import CardVideo from '../../components/CardVideo/CardVideo'
