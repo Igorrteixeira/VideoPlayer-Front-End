@@ -5,7 +5,6 @@ import { DEFALT_VALUE } from "../provider/PlayerStateProvider"
 export const usePlayer = (videoRef: any,url:string) => {
     
     const {playerState, setPlayerState} = useContext(PlayerContext)
-    console.log(videoRef)
 
     const INITIAL = {
         play: true,
@@ -16,8 +15,6 @@ export const usePlayer = (videoRef: any,url:string) => {
         time: videoRef?.current?.duration ,
         currentTime: videoRef?.current?.currentTime
     }
-
-  
 
     const changePlay = () => {
         setPlayerState({ ...playerState, play: !playerState.play})
@@ -42,12 +39,14 @@ export const usePlayer = (videoRef: any,url:string) => {
     const changeVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
         const currentPorcentageValue: number = Number(event.target.value)
         videoRef.current.volume = currentPorcentageValue / 100
+       
         setPlayerState({ ...playerState, volume: currentPorcentageValue })
     }
 
     const changeMute = () => {
-        setPlayerState({ ...playerState, mute: !playerState.mute })
+        setPlayerState({ ...playerState, mute: !playerState.mute, })
         videoRef.current.muted = playerState.mute
+    
     }
 
     const changeFullScreen = () => {

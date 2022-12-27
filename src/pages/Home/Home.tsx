@@ -1,40 +1,49 @@
-import React,{useContext,useState} from 'react'
+import * as S from "./Style"
+import React, { useContext, useState } from 'react'
+import { Videos, videos, listFilter } from "../../data"
 import CardVideo from '../../components/CardVideo/CardVideo'
 import PlayerVideo from '../../components/PlayerVideo/PlayerVideo'
-import {Videos, videos,filter} from "../../data"
-import {Container,ContainerFilter,ContainerVideo } from "./Style"
-import  PlayerContext from "../../context/PlayerContext"
-import  ButtonFilter  from '../../components/ButtonFilter/ButtonFilter'
-import Loader from '../../components/Loader/Loader'
+import PlayerContext from "../../context/PlayerContext"
+import ButtonFilter from '../../components/ButtonFilter/ButtonFilter'
 import CardDescriptipn from '../../components/CardDescription/CardDescriptipn'
 
 const Home = () => {
-  const {playerState, setPlayerState} = useContext(PlayerContext)
-  const [video,SetVideo] = useState<Videos>({id:0,description:"",title:"",url:'',})
+  const { playerState, setPlayerState } = useContext(PlayerContext)
+  const [video, SetVideo] = useState<Videos>({ id: 0, description: '', category: '', title: '', url: '', })
+  const [filter, setFilter] = useState<string>("Todos")
 
   return (
-    <Container screen={playerState.fullScreen}>
-    
-    <ContainerVideo>
-    <PlayerVideo
-    url={video.url}
-    />
-    <CardDescriptipn video={video}/>
-    </ContainerVideo>
+    <S.Container screen={playerState.fullScreen}>
+      <S.ContainerVideo>
+        <PlayerVideo
+          url={video.url}
+        />
+        <CardDescriptipn
+          video={video}
+        />
+      </S.ContainerVideo>
 
-   <ContainerFilter>
-    <ButtonFilter
-    title={filter}
-    />
-    {videos.map(item => {
-      return <CardVideo
-      video={item}
-      handleClick={()=>SetVideo(item)}
-      />
-    })}
-   </ContainerFilter>
-    </Container>
-      
+      <S.ContainerFilter>
+
+        <S.ListFilter>
+          {listFilter.map(item => {
+            return <ButtonFilter
+              handleClick={() => setFilter(item)}
+              title={item} />
+          })}
+        </S.ListFilter>
+
+        {videos.map(item => {
+          if (filter === "Todos" || item.category === filter) {
+            return <CardVideo
+              video={item}
+              handleClick={() => SetVideo(item)}
+            />
+          }
+        })}
+      </S.ContainerFilter>
+    </S.Container>
+
   )
 }
 
