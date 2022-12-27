@@ -44,7 +44,7 @@ export const Controls = styled.div<Display>`
   bottom: 0px;
 
   width: 100%;
-  display: ${(props) => (props.display !== true ? "flex" : "none")};
+  display: ${(props) => (props.display ? "flex" : "none")};
   background-image: linear-gradient(#1f1f1f12, #11111133, #0b0b0b6d, #191818b9);
 `;
 
