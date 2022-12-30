@@ -12,17 +12,13 @@ const usePlayer = (videoRef: any, url: string) => {
         } else {
             videoRef.current.pause()
         }
-
     }
 
     const handleTimeUpdate = () => {
         const currentPorcentage: number = (videoRef.current.currentTime / videoRef.current.duration * 100)
-        setPlayerState({ ...playerState, persentage: currentPorcentage })
-        setPlayerState({
-            ...playerState,
+        setPlayerState({ ...playerState, persentage: currentPorcentage,
             time: videoRef.current.duration,
-            currentTime: videoRef.current.currentTime
-        })
+            currentTime: videoRef.current.currentTime })  
     }
 
     const changePorcentege = (event: React.ChangeEvent<HTMLInputElement>) => {
