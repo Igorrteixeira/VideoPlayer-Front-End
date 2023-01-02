@@ -1,6 +1,6 @@
 # Projeto Video-Player
 
-Link do Deploy = video-player-front-end.vercel.app
+Link do Deploy = https://video-player-front-end.vercel.app/
 ```bash
 Como rodar na sua maquina:
 * git clone
